@@ -16,4 +16,4 @@ After gaining access to the manager page: A reverse shell war file was generated
 A listener was created and a shell file was opened. A reverse shell was obtained as the Tomcat user.
 
 ## Step 6 – Privilege Escalation
-Performed local enumeration and escalated to root.
+A local enumeration was performed using the command 'find / -perm -4000 2>/dev/null'. After checking, it was found that the 'visiter' user had accessed gtfobins.org and found a way to escalate privilege.
