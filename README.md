@@ -15,14 +15,14 @@ This project demonstrates a full attack chain against an exposed Apache Tomcat s
 
 ---
 
-## 🖥 Lab Setup
+##  Lab Setup
 
 * Kali Linux (attacker)
 * Metasploitable2 (target)
 
 ---
 
-## 🔗 Attack Chain
+##  Attack Chain
 
 1. Nmap scan detected port 8180
 2. Apache Tomcat detected
