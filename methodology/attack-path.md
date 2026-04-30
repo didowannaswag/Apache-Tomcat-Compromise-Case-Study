@@ -1,19 +1,37 @@
 # Attack Path
 
 ## Step 1 – Discovery
-Nmap scan revealed port 8180 running Apache Tomcat.
+An Nmap scan identified an open port 8180 running an Apache Tomcat service on the target system.
 
 ## Step 2 – Enumeration
-Gobuster scan revealed /manager page.
+Directory enumeration using Gobuster revealed the `/manager` endpoint, indicating that the Tomcat Manager interface was publicly accessible.
 
 ## Step 3 – Credential Attack
-Create users wordlist with default credentials and also password wordlist for brute force. Used Hydra for brute force HTTP Basic Authentication login page in /manager.
+Default and weak credentials were tested against the Tomcat Manager login interface.  
+Custom username and password wordlists were created based on commonly used Tomcat credentials.  
+Hydra was used to perform an HTTP Basic Authentication brute-force attack, which resulted in valid credentials.
 
 ## Step 4 – Exploitation
-After gaining access to the manager page: A reverse shell war file was generated using msfvenom. The WAR reverse shell was uploaded via Tomcat Manager.
+After successful authentication, access to the Tomcat Manager interface allowed deployment of applications.  
+A malicious WAR file containing a reverse shell payload was generated using msfvenom and uploaded through the Manager interface.
 
 ## Step 5 – Access
-A listener was created and a shell file was opened. A reverse shell was obtained as the Tomcat user.
+A Netcat listener was configured on the attacker machine.  
+Once the deployed application was triggered, a reverse shell connection was established, providing command execution as the Tomcat service user.
 
 ## Step 6 – Privilege Escalation
-A local enumeration was performed using the command 'find / -perm -4000 2>/dev/null'. After checking, it was found that the 'visiter' user had accessed gtfobins.org and found a way to escalate privilege.
+Local enumeration was performed to identify potential privilege escalation vectors.  
+SUID binaries were discovered using the following command:
+
+    find / -perm -4000 2>/dev/null
+
+Further analysis revealed a misconfiguration that allowed privilege escalation using a known technique referenced from GTFOBins.  
+This resulted in root-level access to the system.
+
+---
+
+## Attack Summary
+
+Initial access was obtained through weak credentials on the exposed Tomcat Manager interface.  
+This allowed deployment of a malicious application, leading to remote code execution.  
+Privilege escalation was achieved via misconfigured SUID binaries, resulting in full system compromise.
