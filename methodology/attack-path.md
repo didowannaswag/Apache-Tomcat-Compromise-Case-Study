@@ -4,7 +4,7 @@
 Nmap scan revealed port 8180 running Apache Tomcat.
 
 ## Step 2 – Enumeration
-Accessed web interface and identified /manager endpoint.
+Gobuster scan revealed /manager page.
 
 ## Step 3 – Credential Attack
 Used default credentials to authenticate.
