@@ -13,7 +13,7 @@ Create users wordlist with default credentials and also password wordlist for br
 After gaining access to the manager page: A reverse shell war file was generated using Metasploit. The WAR reverse shell was uploaded via Tomcat Manager.
 
 ## Step 5 – Access
-Obtained reverse shell as tomcat user.
+A listener was created and a shell file was opened. A reverse shell was obtained as the Tomcat user.
 
 ## Step 6 – Privilege Escalation
 Performed local enumeration and escalated to root.
