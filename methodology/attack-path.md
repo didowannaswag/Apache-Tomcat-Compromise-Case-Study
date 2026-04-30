@@ -7,7 +7,7 @@ Nmap scan revealed port 8180 running Apache Tomcat.
 Gobuster scan revealed /manager page.
 
 ## Step 3 – Credential Attack
-Used default credentials to authenticate.
+Create users wordlist with default credentials and also password wordlist for brute force. Used Hydra for brute force HTTP Basic Authentication login page in /manager.
 
 ## Step 4 – Exploitation
 Uploaded WAR reverse shell via Tomcat Manager.
